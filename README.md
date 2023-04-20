@@ -7,7 +7,7 @@
 > Do this task only if you didn't install Rancher Desktop, Docker or Docker Desktop before.
 > If you are not sure whether you installed Docker run `docker --version` in PowerShell. If command/cmdlet has not been found then you don't have Docker installed on your machine.
 
-### Po co?
+### Why?
 
 Because it's free and the simplest solution to run containers on Windows
 
@@ -25,7 +25,7 @@ To be sure that all Rancher Desktop components are installed correctly
 
 ### Steps
 
-1. Open PowerShell (nie jako administrator)
+1. Open PowerShell (not as administrator)
 1. Run command `docker --version`:
 
    Example:
