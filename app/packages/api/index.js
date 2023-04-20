@@ -43,6 +43,9 @@ app.get('/prices/main', setLocals, async (_, res, next) => {
           flag: FLAGS.find((f) => f.code === o.code).url
         };
       });
+	  
+	console.log('New exchange rates has been downloaded');
+	console.log(exchangeRates);
 
     const updated = data.effectiveDate;
 

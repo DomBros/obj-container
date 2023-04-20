@@ -9,35 +9,35 @@
 
 ### Po co?
 
-Bo jest to najprostszy sposób uruchomienia kontenerów na Windows
+Because it's free and the simplest solution to run containers on Windows
 
-### Kroki
+### Steps
 
-1. Pobierz instalator ze strony [Rancher Desktop](https://github.com/rancher-sandbox/rancher-desktop/releases/download/v1.8.1/Rancher.Desktop.Setup.1.8.1.msi)
-1. Uruchom instalator i zainstaluj oprogramowanie. Możesz zostać poproszony o restart systemu
-1. Uruchom Rancher Desktop i poczekaj aż pobranie komponentów Rancher Desktop zostanie zakończone
+1. Download the installer from the [Rancher Desktop](https://github.com/rancher-sandbox/rancher-desktop/releases/download/v1.8.1/Rancher.Desktop.Setup.1.8.1.msi) website.
+1. Run the installer and install the software. You may be prompted to restart your system.
+1. Start Rancher Desktop and wait for the Rancher Desktop components to finish downloading.
 
 ## Task 2: Check Docker installation
 
-### Po co?
+### Why?
 
-Żeby mieć pewność, że komponenty potrzebne do uruchomienia kontenerów zostały poprawnie zainstalowane
+To be sure that all Rancher Desktop components are installed correctly
 
-### Kroki
+### Steps
 
-1. Uruchom PowerShell (nie jako administrator)
-1. Wykonaj komendę `docker --version`:
+1. Open PowerShell (nie jako administrator)
+1. Run command `docker --version`:
 
-   Przykład:
+   Example:
 
     ```bash
     PS> docker --version
     Docker version 23.0.1-rd, build 393499b
     ```
 
-1. Uruchom testowy kontener korzystając z komendy `docker run hello-world`:
+1. Run test container using command `docker run hello-world`:
 
-    Przykład:
+    Example:
 
     ```bash
     PS> docker run hello-world
@@ -71,10 +71,55 @@ Bo jest to najprostszy sposób uruchomienia kontenerów na Windows
 
 ## Task 3: Run application in container
 
-### Po co?
+### Steps
 
-Bo to nasza pierwsza aplikacja, którą chcemy uruchomić
+1. Open `./app/packages/frontend` directory in PowerShell
+1. Build frontend container from Dockerfile:
 
-### Kroki
+    ```bash
+    docker buildx build -t my-frontend .
+    ```
 
-1. 
+1. Run frontend container:
+
+    ```bash
+    docker run -p 8080:80 my-frontend
+    ```
+
+1. Open [http://localhost:8080](http://localhost:8080) in browser to view running frontend application
+
+1. Open new PowerShell window and go to `./app/packages/api` directory
+
+1. Build API container from Dockerfile:
+
+    ```bash
+    docker buildx build -t my-api .
+    ```
+
+1. Run backend container:
+
+    ```bash
+    docker run -p 8888:8888 my-api
+    ```
+
+1. Close frontend application using Ctrl-C
+
+1. Close backend application using:
+
+    ```bash
+    docker ps
+    docker kill <backend-container-id>
+    ```
+
+## Task 4: Run both containers in single PowerShell session
+
+### Steps
+
+1. Open `./app` directory in PowerShell
+1. Run containers with Docker Compose:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+1. Open [http://localhost:8080](http://localhost:8080) in browser to view application running
