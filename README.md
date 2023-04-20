@@ -15,7 +15,7 @@ Because it's free and the simplest solution to run containers on Windows
 
 1. Download the installer from the [Rancher Desktop](https://github.com/rancher-sandbox/rancher-desktop/releases/download/v1.8.1/Rancher.Desktop.Setup.1.8.1.msi) website.
 1. Run the installer and install the software. You may be prompted to restart your system.
-1. Start Rancher Desktop and wait for the Rancher Desktop components to finish downloading.
+1. Start Rancher Desktop. When prompted select Dockerd (moby) as desired Container Engine. Wait for the Rancher Desktop components to finish downloading (around 5 minutes).
 
 ## Task 2: Check Docker installation
 
